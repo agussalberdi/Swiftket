@@ -1,0 +1,10 @@
+<div class="event" (click)="addToCart(event)">
+    <div class="event-image">
+        <img [src]="event?.image" />
+        <mat-icon (click)="addToWishList(event)">favorite</mat-icon>
+    </div>
+    <h3>{{event?.name}}</h3>
+    <span class="text-primary">{{event?.date | date:'EEE, d MMM yyyy':'es'}}</span>
+    <p>{{event?.location?.address}} - {{event?.location?.city}}</p>
+    <p>{{event?.price | currency: 'USD'}}</p>
+</div>

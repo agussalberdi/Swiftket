@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'second-loop' title`, () => {
+  it(`should have the 'swiftket' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('second-loop');
+    expect(app.title).toEqual('swiftket');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, second-loop');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, swiftket');
   });
 });
