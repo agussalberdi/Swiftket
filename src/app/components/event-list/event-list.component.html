@@ -1,5 +1,7 @@
 <div class="event-list">
     @for (event of events; track event.id) {
-        <app-event-detail [event]="event"></app-event-detail>
+        <app-event [event]="event"></app-event>
+    } @empty {
+        <p>No events found</p>
     }
 </div>

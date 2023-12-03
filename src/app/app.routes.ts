@@ -18,12 +18,4 @@ export const routes: Routes = [
         path: 'event-detail/:id',
         loadComponent: () => import('./components/event-list/event-detail/event-detail.component').then(m => m.EventDetailComponent)
     },
-    // {
-    //     path: 'profile',
-    //     loadComponent: () => import('./components/user-profile/user-profile.component').then(m => m.UserProfileComponent)
-    // },
-    // {
-    //     path: 'profile/:id',
-    //     loadComponent: () => import('./components/user-profile/user-profile.component').then(m => m.UserProfileComponent)
-    // },
 ];

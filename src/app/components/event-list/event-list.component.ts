@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { EventDetailComponent } from './event-detail/event-detail.component';
+import { EventComponent } from './event/event.component';
 import { Event } from '../../models/event.model';
 
 @Component({
   selector: 'app-event-list',
   standalone: true,
-  imports: [EventDetailComponent],
+  imports: [EventComponent],
   templateUrl: './event-list.component.html',
   styleUrl: './event-list.component.scss'
 })
