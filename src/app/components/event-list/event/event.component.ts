@@ -1,4 +1,4 @@
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgOptimizedImage } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,12 +8,25 @@ import { Event } from '../../../models/event.model';
 @Component({
   selector: 'app-event',
   standalone: true,
-  imports: [CurrencyPipe, DatePipe, RouterLink, MatButtonModule, MatIconModule],
+  imports: [CurrencyPipe, DatePipe, RouterLink, NgOptimizedImage, MatButtonModule, MatIconModule],
   templateUrl: './event.component.html',
   styleUrl: './event.component.scss'
 })
 export class EventComponent {
-  @Input() event: Event | undefined;
+  @Input() event: Event = {
+    id: '',
+    name: '',
+    description: '',
+    date: '',
+    time: '',
+    price: 0,
+    image: '',
+    location: {
+      address: '',
+      city: '',
+      country: ''
+    }
+  };
 
   constructor() {}
 

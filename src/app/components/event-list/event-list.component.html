@@ -1,5 +1,5 @@
 <div class="event-list">
-    @for (event of events; track event.id) {
+    @for (event of events$ | async; track event.id) {
         <app-event [event]="event"></app-event>
     } @empty {
         <p>No events found</p>
