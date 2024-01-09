@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Event } from '../models/event.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EventsService {
+export class EventManagementService {
   events: Event[] = [
     {
       id: '1',
@@ -64,10 +64,23 @@ export class EventsService {
       image: '../../../assets/images/event.avif'
     }
   ];
+  private eventsSubject = new BehaviorSubject<Event[]>([]);
+  public events$ = this.eventsSubject.asObservable();
 
-  constructor() {}
+  constructor() {
+    this.initializeEvents();
+  }
+
+  private initializeEvents(): void {
+    this.eventsSubject.next(this.events);
+  }
 
   getEvents(): Observable<Event[]> {
-    return of(this.events);
+    return this.eventsSubject.asObservable();
+  }
+
+  addEvent(event: Event): void {
+    const currentEvents = this.eventsSubject.getValue();
+    this.eventsSubject.next([...currentEvents, event]);
   }
 }

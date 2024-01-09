@@ -1,0 +1,15 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* This ensures that the wrapper takes at least the full viewport height */
+}
+  
+ .content {
+    flex: 1; /* This allows the content area to grow and take up all available space */
+}
+  
+app-footer {
+    /* Add any specific styles for your footer here */
+    margin-top: auto; /* This pushes the footer to the bottom of the wrapper */
+}
+  

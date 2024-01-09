@@ -1,7 +1,13 @@
-<div class="event-list">
-    @for (event of events$ | async; track event.id) {
-        <app-event [event]="event"></app-event>
-    } @empty {
-        <p>No events found</p>
-    }
+<div class="events">
+    <app-main-container>
+        <div class="event-list">
+            @for (event of events$ | async; track event.id) {
+                <app-event [event]="event"></app-event>
+            } @empty {
+                <p>No events found</p>
+            }
+        </div>
+
+        <button mat-flat-button color="accent" routerLink="/add-event">Add New Event</button>
+    </app-main-container>
 </div>
