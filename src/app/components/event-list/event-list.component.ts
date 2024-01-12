@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { EventComponent } from './event/event.component';
 import { Event } from '../../models/event.model';
-import { EventManagementService } from '../../services/event-management.service';
-import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MainContainerComponent } from '../layout/main-container/main-container.component';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as EventActions from '../../store/events/event.actions';
+import { selectEvents } from '../../store/events/event.selectors';
 
 @Component({
   selector: 'app-event-list',
@@ -16,11 +18,11 @@ import { MainContainerComponent } from '../layout/main-container/main-container.
   styleUrl: './event-list.component.scss'
 })
 export class EventListComponent implements OnInit {
-  events$: Observable<Event[]> | undefined;
+  readonly events$: Observable<Event[]> | undefined = this.store.select(selectEvents);
 
-  constructor(private eventManagementService: EventManagementService) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
-    this.events$ = this.eventManagementService.getEvents();
+    this.store.dispatch(EventActions.loadEvents());
   }
 }

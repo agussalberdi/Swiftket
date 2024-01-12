@@ -22,7 +22,7 @@
     .event-image {
         position: relative;
         img {
-            object-fit: cover;
+            object-fit: fill;
             border-radius: 10px;
             margin-bottom: 10px;
         }

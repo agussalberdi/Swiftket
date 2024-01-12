@@ -17,15 +17,10 @@ export class EventComponent {
     id: '',
     name: '',
     description: '',
-    date: '',
-    time: '',
+    date: new Date(),
     price: 0,
+    address: '',
     image: '',
-    location: {
-      address: '',
-      city: '',
-      country: ''
-    }
   };
 
   constructor() {}
