@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 import { Event } from '../models/event.model';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Event } from '../models/event.model';
 export class EventsService {
   events: Event[] = [
     {
-      id: '1',
+      id: uuidv4(),
       name: 'Event 1',
       description: 'Event 1 description',
       price: 100,
@@ -17,7 +18,7 @@ export class EventsService {
       image: '../../../assets/images/event.jpeg'
     },
     {
-      id: '2',
+      id: uuidv4(),
       name: 'Event 2',
       description: 'Event 2 description',
       price: 200,
@@ -26,7 +27,7 @@ export class EventsService {
       image: '../../../assets/images/event-2.jpeg'
     },
     {
-      id: '3',
+      id: uuidv4(),
       name: 'Event 3',
       description: 'Event 3 description',
       price: 300,
@@ -35,7 +36,7 @@ export class EventsService {
       image: '../../../assets/images/event-3.jpeg'
     },
     {
-      id: '4',
+      id: uuidv4(),
       name: 'Event 4',
       description: 'Event 4 description',
       price: 400,
@@ -58,8 +59,11 @@ export class EventsService {
     return this.eventsSubject.asObservable();
   }
 
-  addEvent(event: Event): void {
+  addEvent(event: Event) {
     const currentEvents = this.eventsSubject.getValue();
+    console.log("current events: ", currentEvents);
+    console.log("new event: ", event);
     this.eventsSubject.next([...currentEvents, event]);
+    return this.eventsSubject.asObservable();
   }
 }

@@ -18,6 +18,17 @@ export class EventEffects {
       })
     ))
   ));
+
+  addEvent$ = createEffect(() => this.actions$.pipe(
+    ofType(EventActions.addEvent),
+    mergeMap(({ event }) => this.eventsService.addEvent(event).pipe(
+      map(events => EventActions.loadEventsSuccess({ events })),
+      catchError(() => {
+        console.error('Error adding new event');
+        return of({ type: 'addEventError' });
+      })
+    ))
+  ));
   
   constructor(
     private actions$: Actions,

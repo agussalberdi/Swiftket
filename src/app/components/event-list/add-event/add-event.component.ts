@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { v4 as uuidv4 } from 'uuid';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -33,7 +34,7 @@ export class AddEventComponent {
 
   onSubmit(): void {
     if (this.eventForm.valid) {
-      const newEvent: Event = this.eventForm.value;
+      const newEvent: Event = { id: uuidv4(), ...this.eventForm.value };
       this.store.dispatch(EventActions.addEvent({ event: newEvent }));
       this.router.navigate(['/event-list']);
     }
